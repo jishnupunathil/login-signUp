@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button'
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatCardModule} from '@angular/material/card'
+import {MatFormFieldModule,} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -16,7 +20,12 @@ import {MatButtonModule} from '@angular/material/button'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
