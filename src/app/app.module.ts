@@ -10,6 +10,9 @@ import {MatTabsModule} from '@angular/material/tabs'
 import {MatCardModule} from '@angular/material/card'
 import {MatFormFieldModule,} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input'
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon'
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import {MatInputModule} from '@angular/material/input'
     MatTabsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule
 
   ],
   providers: [],
