@@ -8,8 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class HomeComponent {
   signSubmit=false
-  submit=false
+  submitted=false
   hide=true
+  signHide=true
   role=[
     {id:1,name:'Manager'},
     {id:2,name:'Hr'},
@@ -31,8 +32,20 @@ export class HomeComponent {
     age:['',Validators.required],
     gender:['',Validators.required],
     date:['',Validators.required],
-    role:[,Validators.required]
+    role:[,Validators.required],
+    passWord:['',[Validators.required,Validators.minLength(6)]],
+    ConfirmPass:['',[Validators.required,Validators.minLength(6)]]
 
+  },
+  {
+    validators:()=>{
+      if(this.signUpForm?.controls?.passWord.value!=this.signUpForm?.controls?.ConfirmPass.value){
+        console.log('hello');
+        this.signUpForm.controls.ConfirmPass.setErrors({passMisMatch:true})
+      }
+      console.log('hello');
+      
+    }
   }
   )
 
@@ -43,8 +56,10 @@ export class HomeComponent {
   }
 
   onSubmit(data:any){
-    this.submit=true
+    this.submitted=true
     console.log({data});
+    
+
     
   }
 
@@ -58,7 +73,7 @@ export class HomeComponent {
   onSign(value:any){
     this.signSubmit=true
     console.log(value);
-    
+
   }
 
 

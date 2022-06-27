@@ -9,8 +9,8 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Email" formControlName="email" >
-                    <mat-error *ngIf="allControls?.email?.errors?.email&&submit">Invalid Email</mat-error>
-                    <mat-error *ngIf="allControls?.email?.errors?.required&&submit">Email required</mat-error>
+                    <mat-error *ngIf="allControls?.email?.errors?.email&&submitted">Invalid Email</mat-error>
+                    <mat-error *ngIf="allControls?.email?.errors?.required&&submitted">Email required</mat-error>
                   </mat-form-field>
 
                   <mat-form-field appearance="outline">
@@ -19,9 +19,11 @@
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
-                    <mat-error *ngIf="allControls?.password?.errors?.required&&submit">password required</mat-error>
-                    <mat-error *ngIf="allControls?.password?.errors?.minLength&&submit">min length required</mat-error>
+                    <mat-error *ngIf="allControls?.password?.errors?.required&&submitted">password required</mat-error>
+                    <mat-error *ngIf="allControls?.password?.errors?.minLength&&submitted">min length required</mat-error>
                   </mat-form-field>
+
+
                   <div style="text-align: center;">
                   <button mat-raised-button color="primary" style="text-align:center">Login</button>
                 </div>
@@ -34,7 +36,7 @@
 
     </mat-tab>
 
-    <mat-tab mat-align-tabs="center" label="SignUp">`
+    <mat-tab  label="SignUp">`
       <mat-card class="login-card">
         <form [formGroup]="signUpForm" (ngSubmit)="onSign(signUpForm)">
           <mat-form-field appearance="outline">
@@ -67,7 +69,6 @@
 
 
               <mat-form-field class="example-full-width" appearance="outline" >
-                <!-- <mat-label >Choose a date</mat-label> -->
                 <input matInput  [matDatepicker]="picker" formControlName="date" >
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
@@ -83,7 +84,29 @@
                 </mat-select>
               </mat-form-field>
 
+<mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" formControlName="passWord" [type]="signHide?'password':'text'">
+                    <button mat-icon-button matSuffix (click)="signHide = !signHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="signHide">
+                      <mat-icon>{{signHide? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signControls?.passWord?.errors?.required&&signSubmit">password required</mat-error>
+                    <mat-error *ngIf="signControls?.passWord?.errors?.minLength&&signSubmit">min length required</mat-error>
+                  </mat-form-field>
 
+
+                  
+<mat-form-field appearance="outline">
+  <mat-label>Confirm Password</mat-label>
+  <input matInput placeholder="ConfirmPassword" formControlName="ConfirmPass" [type]="signHide?'password':'text'">
+  <button mat-icon-button matSuffix (click)="signHide = !signHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="signHide">
+    <mat-icon>{{signHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+  <mat-error *ngIf="signControls?.ConfirmPass?.errors?.required&&signSubmit">password required</mat-error>
+  <mat-error *ngIf="signControls?.ConfirmPass?.errors?.minLength&&signSubmit">min length required</mat-error>
+  <mat-error *ngIf="signControls?.ConfirmPass?.errors?.passMisMatch&&signSubmit">password mismatch</mat-error>
+
+</mat-form-field>
 
             <div style="text-align: center;">
               <button mat-raised-button color="primary" style="text-align:center">Register</button>
